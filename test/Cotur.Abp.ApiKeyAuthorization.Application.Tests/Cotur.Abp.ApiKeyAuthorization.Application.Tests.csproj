@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>Cotur.Abp.ApiKeyAuthorization</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Cotur.Abp.ApiKeyAuthorization.Application\Cotur.Abp.ApiKeyAuthorization.Application.csproj" />
+    <ProjectReference Include="..\Cotur.Abp.ApiKeyAuthorization.Domain.Tests\Cotur.Abp.ApiKeyAuthorization.Domain.Tests.csproj" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
+  </ItemGroup>
+
+</Project>

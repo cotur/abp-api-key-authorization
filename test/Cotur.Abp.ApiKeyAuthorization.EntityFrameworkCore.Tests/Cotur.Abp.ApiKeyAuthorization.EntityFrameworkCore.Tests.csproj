@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>Cotur.Abp.ApiKeyAuthorization</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="6.0.0" />
+    <ProjectReference Include="..\..\src\Cotur.Abp.ApiKeyAuthorization.EntityFrameworkCore\Cotur.Abp.ApiKeyAuthorization.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\Cotur.Abp.ApiKeyAuthorization.TestBase\Cotur.Abp.ApiKeyAuthorization.TestBase.csproj" />
+    <PackageReference Include="Volo.Abp.EntityFrameworkCore.Sqlite" Version="5.2.2" />
+  </ItemGroup>
+
+</Project>

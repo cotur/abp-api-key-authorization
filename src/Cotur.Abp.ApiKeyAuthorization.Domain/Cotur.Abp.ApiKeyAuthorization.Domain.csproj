@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>Cotur.Abp.ApiKeyAuthorization</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.Ddd.Domain" Version="5.2.2" />
+    <ProjectReference Include="..\Cotur.Abp.ApiKeyAuthorization.Domain.Shared\Cotur.Abp.ApiKeyAuthorization.Domain.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

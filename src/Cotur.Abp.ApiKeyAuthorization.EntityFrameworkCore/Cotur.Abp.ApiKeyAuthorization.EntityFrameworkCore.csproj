@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>Cotur.Abp.ApiKeyAuthorization</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.EntityFrameworkCore" Version="5.2.2" />
+    <ProjectReference Include="..\Cotur.Abp.ApiKeyAuthorization.Domain\Cotur.Abp.ApiKeyAuthorization.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

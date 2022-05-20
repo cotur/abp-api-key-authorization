@@ -1,0 +1,111 @@
+{
+  "folders": {
+    "items": {
+      "src": {},
+      "test": {},
+      "host": {}
+    }
+  },
+  "packages": {
+    "Cotur.Abp.ApiKeyAuthorization.Domain.Shared": {
+      "path": "src/Cotur.Abp.ApiKeyAuthorization.Domain.Shared/Cotur.Abp.ApiKeyAuthorization.Domain.Shared.abppkg.json",
+      "folder": "src"
+    },
+    "Cotur.Abp.ApiKeyAuthorization.Domain": {
+      "path": "src/Cotur.Abp.ApiKeyAuthorization.Domain/Cotur.Abp.ApiKeyAuthorization.Domain.abppkg.json",
+      "folder": "src"
+    },
+    "Cotur.Abp.ApiKeyAuthorization.Application.Contracts": {
+      "path": "src/Cotur.Abp.ApiKeyAuthorization.Application.Contracts/Cotur.Abp.ApiKeyAuthorization.Application.Contracts.abppkg.json",
+      "folder": "src"
+    },
+    "Cotur.Abp.ApiKeyAuthorization.Application": {
+      "path": "src/Cotur.Abp.ApiKeyAuthorization.Application/Cotur.Abp.ApiKeyAuthorization.Application.abppkg.json",
+      "folder": "src"
+    },
+    "Cotur.Abp.ApiKeyAuthorization.EntityFrameworkCore": {
+      "path": "src/Cotur.Abp.ApiKeyAuthorization.EntityFrameworkCore/Cotur.Abp.ApiKeyAuthorization.EntityFrameworkCore.abppkg.json",
+      "folder": "src"
+    },
+    "Cotur.Abp.ApiKeyAuthorization.MongoDB": {
+      "path": "src/Cotur.Abp.ApiKeyAuthorization.MongoDB/Cotur.Abp.ApiKeyAuthorization.MongoDB.abppkg.json",
+      "folder": "src"
+    },
+    "Cotur.Abp.ApiKeyAuthorization.HttpApi": {
+      "path": "src/Cotur.Abp.ApiKeyAuthorization.HttpApi/Cotur.Abp.ApiKeyAuthorization.HttpApi.abppkg.json",
+      "folder": "src"
+    },
+    "Cotur.Abp.ApiKeyAuthorization.HttpApi.Client": {
+      "path": "src/Cotur.Abp.ApiKeyAuthorization.HttpApi.Client/Cotur.Abp.ApiKeyAuthorization.HttpApi.Client.abppkg.json",
+      "folder": "src"
+    },
+    "Cotur.Abp.ApiKeyAuthorization.TestBase": {
+      "path": "test/Cotur.Abp.ApiKeyAuthorization.TestBase/Cotur.Abp.ApiKeyAuthorization.TestBase.abppkg.json",
+      "folder": "test"
+    },
+    "Cotur.Abp.ApiKeyAuthorization.EntityFrameworkCore.Tests": {
+      "path": "test/Cotur.Abp.ApiKeyAuthorization.EntityFrameworkCore.Tests/Cotur.Abp.ApiKeyAuthorization.EntityFrameworkCore.Tests.abppkg.json",
+      "folder": "test"
+    },
+    "Cotur.Abp.ApiKeyAuthorization.MongoDB.Tests": {
+      "path": "test/Cotur.Abp.ApiKeyAuthorization.MongoDB.Tests/Cotur.Abp.ApiKeyAuthorization.MongoDB.Tests.abppkg.json",
+      "folder": "test"
+    },
+    "Cotur.Abp.ApiKeyAuthorization.Domain.Tests": {
+      "path": "test/Cotur.Abp.ApiKeyAuthorization.Domain.Tests/Cotur.Abp.ApiKeyAuthorization.Domain.Tests.abppkg.json",
+      "folder": "test"
+    },
+    "Cotur.Abp.ApiKeyAuthorization.Application.Tests": {
+      "path": "test/Cotur.Abp.ApiKeyAuthorization.Application.Tests/Cotur.Abp.ApiKeyAuthorization.Application.Tests.abppkg.json",
+      "folder": "test"
+    },
+    "Cotur.Abp.ApiKeyAuthorization.HttpApi.Host": {
+      "path": "host/Cotur.Abp.ApiKeyAuthorization.HttpApi.Host/Cotur.Abp.ApiKeyAuthorization.HttpApi.Host.abppkg.json",
+      "folder": "host"
+    },
+    "Cotur.Abp.ApiKeyAuthorization.Web": {
+      "path": "src/Cotur.Abp.ApiKeyAuthorization.Web/Cotur.Abp.ApiKeyAuthorization.Web.abppkg.json",
+      "folder": "src"
+    },
+    "Cotur.Abp.ApiKeyAuthorization.HttpApi.Client.ConsoleTestApp": {
+      "path": "test/Cotur.Abp.ApiKeyAuthorization.HttpApi.Client.ConsoleTestApp/Cotur.Abp.ApiKeyAuthorization.HttpApi.Client.ConsoleTestApp.abppkg.json",
+      "folder": "test"
+    },
+    "Cotur.Abp.ApiKeyAuthorization.Web.Host": {
+      "path": "host/Cotur.Abp.ApiKeyAuthorization.Web.Host/Cotur.Abp.ApiKeyAuthorization.Web.Host.abppkg.json",
+      "folder": "host"
+    },
+    "Cotur.Abp.ApiKeyAuthorization.IdentityServer": {
+      "path": "host/Cotur.Abp.ApiKeyAuthorization.IdentityServer/Cotur.Abp.ApiKeyAuthorization.IdentityServer.abppkg.json",
+      "folder": "host"
+    },
+    "Cotur.Abp.ApiKeyAuthorization.Host.Shared": {
+      "path": "host/Cotur.Abp.ApiKeyAuthorization.Host.Shared/Cotur.Abp.ApiKeyAuthorization.Host.Shared.abppkg.json",
+      "folder": "host"
+    },
+    "Cotur.Abp.ApiKeyAuthorization.Web.Unified": {
+      "path": "host/Cotur.Abp.ApiKeyAuthorization.Web.Unified/Cotur.Abp.ApiKeyAuthorization.Web.Unified.abppkg.json",
+      "folder": "host"
+    },
+    "Cotur.Abp.ApiKeyAuthorization.Blazor": {
+      "path": "src/Cotur.Abp.ApiKeyAuthorization.Blazor/Cotur.Abp.ApiKeyAuthorization.Blazor.abppkg.json",
+      "folder": "src"
+    },
+    "Cotur.Abp.ApiKeyAuthorization.Blazor.Host": {
+      "path": "host/Cotur.Abp.ApiKeyAuthorization.Blazor.Host/Cotur.Abp.ApiKeyAuthorization.Blazor.Host.abppkg.json",
+      "folder": "host"
+    },
+    "Cotur.Abp.ApiKeyAuthorization.Blazor.Server": {
+      "path": "src/Cotur.Abp.ApiKeyAuthorization.Blazor.Server/Cotur.Abp.ApiKeyAuthorization.Blazor.Server.abppkg.json",
+      "folder": "src"
+    },
+    "Cotur.Abp.ApiKeyAuthorization.Blazor.WebAssembly": {
+      "path": "src/Cotur.Abp.ApiKeyAuthorization.Blazor.WebAssembly/Cotur.Abp.ApiKeyAuthorization.Blazor.WebAssembly.abppkg.json",
+      "folder": "src"
+    },
+    "Cotur.Abp.ApiKeyAuthorization.Blazor.Server.Host": {
+      "path": "host/Cotur.Abp.ApiKeyAuthorization.Blazor.Server.Host/Cotur.Abp.ApiKeyAuthorization.Blazor.Server.Host.abppkg.json",
+      "folder": "host"
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "modules": {
+    "Cotur.Abp.ApiKeyAuthorization": {
+      "path": "Cotur.Abp.ApiKeyAuthorization.abpmdl.json"
+    }
+  }
+}

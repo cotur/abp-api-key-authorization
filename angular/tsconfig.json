@@ -1,0 +1,15 @@
+{
+  "extends": "./tsconfig.prod.json",
+  "compilerOptions": {
+    "paths": {
+      "@cotur.Abp/api-key-authorization": [
+        "projects/api-key-authorization/src/public-api.ts"
+      ],
+      "@cotur.Abp/api-key-authorization/config": [
+        "projects/api-key-authorization/config/src/public-api.ts"
+      ],
+      "@proxy": ["projects/api-key-authorization/src/lib/proxy/index.ts"],
+      "@proxy/*": ["projects/api-key-authorization/src/lib/proxy/*"]
+    }
+  }
+}
