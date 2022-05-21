@@ -8,7 +8,12 @@ public class ApiKeyAuthorizationPermissionDefinitionProvider : PermissionDefinit
 {
     public override void Define(IPermissionDefinitionContext context)
     {
-        var myGroup = context.AddGroup(ApiKeyAuthorizationPermissions.GroupName, L("Permission:ApiKeyAuthorization"));
+        var apiKeyGroup = context.AddGroup(ApiKeyAuthorizationPermissions.GroupName, L("Permission:ApiKeyAuthorization"));
+        
+        var apiKeyPermissions = apiKeyGroup.AddPermission(ApiKeyAuthorizationPermissions.ApiKeys.Default, L("ApiKeys:ApiKeyManagement"));
+        apiKeyPermissions.AddChild(ApiKeyAuthorizationPermissions.ApiKeys.Create, L("ApiKeys:Create"));
+        apiKeyPermissions.AddChild(ApiKeyAuthorizationPermissions.ApiKeys.Update, L("ApiKeys:Edit"));
+        apiKeyPermissions.AddChild(ApiKeyAuthorizationPermissions.ApiKeys.Delete, L("ApiKeys:Delete"));
     }
 
     private static LocalizableString L(string name)
