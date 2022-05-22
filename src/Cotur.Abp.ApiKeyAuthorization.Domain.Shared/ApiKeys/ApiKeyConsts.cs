@@ -2,6 +2,6 @@
 
 public static class ApiKeyConsts
 {
-    public static int MaxKeyLength { get; set; } = 32;
-    public static int MaxValueLength { get; set; } = 128;
+    public static int MaxNameLength { get; set; } = 32;
+    public static int MaxKeyLength { get; set; } = 128;
 }

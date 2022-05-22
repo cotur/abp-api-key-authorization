@@ -8,6 +8,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Volo.Abp.Core" Version="5.2.2" />
+        <PackageReference Include="Volo.Abp.Authorization.Abstractions" Version="5.2.2" />
     </ItemGroup>
 </Project>

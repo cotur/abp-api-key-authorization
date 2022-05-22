@@ -1,33 +1,28 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Cotur.Abp.ApiKeyAuthorization.ApiKeys;
+using Microsoft.EntityFrameworkCore;
 using Volo.Abp;
+using Volo.Abp.EntityFrameworkCore.Modeling;
 
 namespace Cotur.Abp.ApiKeyAuthorization.EntityFrameworkCore;
 
 public static class ApiKeyAuthorizationDbContextModelCreatingExtensions
 {
-    public static void ConfigureApiKeyAuthorization(
-        this ModelBuilder builder)
+    public static void ConfigureApiKeyAuthorization(this ModelBuilder builder)
     {
         Check.NotNull(builder, nameof(builder));
 
-        /* Configure all entities here. Example:
-
-        builder.Entity<Question>(b =>
+        builder.Entity<ApiKey>(b =>
         {
-            //Configure table & schema name
-            b.ToTable(ApiKeyAuthorizationDbProperties.DbTablePrefix + "Questions", ApiKeyAuthorizationDbProperties.DbSchema);
-
+            b.ToTable(ApiKeyAuthorizationDbProperties.DbTablePrefix + "ApiKeys", ApiKeyAuthorizationDbProperties.DbSchema);
+            
             b.ConfigureByConvention();
 
-            //Properties
-            b.Property(q => q.Title).IsRequired().HasMaxLength(QuestionConsts.MaxTitleLength);
+            b.Property(x => x.Name).IsRequired().HasMaxLength(ApiKeyConsts.MaxNameLength);
+            b.Property(x => x.Key).IsRequired().HasMaxLength(ApiKeyConsts.MaxKeyLength);
+            b.Property(x => x.Active).IsRequired();
 
-            //Relations
-            b.HasMany(question => question.Tags).WithOne().HasForeignKey(qt => qt.QuestionId);
-
-            //Indexes
-            b.HasIndex(q => q.CreationTime);
+            b.HasIndex(x => x.Key);
+            b.HasIndex(x => new {x.Key, x.TenantId, x.Active});
         });
-        */
     }
 }

@@ -8,28 +8,30 @@ namespace Cotur.Abp.ApiKeyAuthorization.ApiKeys;
 public class ApiKey : FullAuditedEntity<Guid>, IMultiTenant
 {
     public Guid? TenantId { get; protected set; }
+    public string Name { get; protected set; }
     public string Key { get; protected set; }
-    public string Value { get; protected set; }
+    public bool Active { get; protected set; }
     
     protected ApiKey()
     {
         
     }
 
-    public ApiKey(Guid id, string key, string value, Guid? tenantId): base(id)
+    public ApiKey(Guid id, string key, string value, bool active, Guid? tenantId): base(id)
     {
         TenantId = tenantId;
-        SetKey(key);
-        SetValue(value);
+        SetName(key);
+        SetKey(value);
+        Active = active;
     }
 
-    protected virtual void SetValue(string value)
+    protected virtual void SetKey(string value)
     {
-        Value = Check.NotNullOrWhiteSpace(value, nameof(value), ApiKeyConsts.MaxValueLength);
+        Key = Check.NotNullOrWhiteSpace(value, nameof(value), ApiKeyConsts.MaxKeyLength);
     }
 
-    protected virtual void SetKey(string key)
+    protected virtual void SetName(string key)
     {
-        Key = Check.NotNullOrWhiteSpace(key, nameof(key), ApiKeyConsts.MaxKeyLength);
+        Name = Check.NotNullOrWhiteSpace(key, nameof(key), ApiKeyConsts.MaxNameLength);
     }
 }
