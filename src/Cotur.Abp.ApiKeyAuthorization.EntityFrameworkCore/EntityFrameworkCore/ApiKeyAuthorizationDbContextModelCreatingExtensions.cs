@@ -22,7 +22,7 @@ public static class ApiKeyAuthorizationDbContextModelCreatingExtensions
             b.Property(x => x.Active).IsRequired();
 
             b.HasIndex(x => x.Key);
-            b.HasIndex(x => new {x.Key, x.TenantId, x.Active});
+            b.HasIndex(x => new {x.Key, x.Active, x.ExpireAt});
         });
     }
 }

@@ -1,13 +1,11 @@
-﻿using System;
-using System.Threading.Tasks;
-using Cotur.Abp.ApiKeyAuthorization.Core.ApiKeys;
+﻿using Cotur.Abp.ApiKeyAuthorization.Core.ApiKeys;
 using JetBrains.Annotations;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Volo.Abp;
 
-namespace Cotur.Abp.ApiKeyAuthorization.ApiKeys;
+namespace Cotur.Abp.ApiKeyAuthorization.Http.ApiKeys;
 
 public abstract class HttpApiKeyResolveContributorBase : ApiKeyResolveContributorBase
 {

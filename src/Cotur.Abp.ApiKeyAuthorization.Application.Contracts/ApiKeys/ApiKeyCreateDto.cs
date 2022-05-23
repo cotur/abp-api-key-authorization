@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Cotur.Abp.ApiKeyAuthorization.ApiKeys;
 
@@ -13,4 +14,6 @@ public class ApiKeyCreateDto
     public string Key { get; set; }
     
     public bool Active { get; set; }
+
+    public DateTime? ExpireAt { get; set; }
 }

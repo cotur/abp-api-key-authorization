@@ -20,6 +20,7 @@ public class ApiKeyAuthorizationApplicationAutoMapperProfile : Profile
             .Ignore(x => x.Id)
             .Ignore(x => x.ExtraProperties)
             .Ignore(x => x.ConcurrencyStamp)
+            .Ignore(x => x.Key)
             .Ignore(x => x.TenantId);
     }
 }

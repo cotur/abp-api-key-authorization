@@ -9,16 +9,17 @@ using Volo.Abp.Modularity;
 using Volo.Abp.UI.Navigation;
 using Volo.Abp.VirtualFileSystem;
 using Cotur.Abp.ApiKeyAuthorization.Permissions;
+using Cotur.Abp.ApiKeyAuthorization.Web.Pages.ApiKeys;
 using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared.PageToolbars;
-using Volo.Abp.Identity;
-using Volo.Abp.Identity.Localization;
 using Volo.Abp.Localization;
+using Volo.Abp.PermissionManagement.Web;
 
 namespace Cotur.Abp.ApiKeyAuthorization.Web;
 
 [DependsOn(
     typeof(ApiKeyAuthorizationApplicationContractsModule),
     typeof(AbpAspNetCoreMvcUiThemeSharedModule),
+    typeof(AbpPermissionManagementWebModule),
     typeof(AbpAutoMapperModule)
     )]
 public class ApiKeyAuthorizationWebModule : AbpModule
@@ -62,7 +63,7 @@ public class ApiKeyAuthorizationWebModule : AbpModule
         
         Configure<AbpPageToolbarOptions>(options =>
         {
-            options.Configure<Cotur.Abp.ApiKeyAuthorization.Web.Pages.Identity.ApiKeys.IndexModel>(
+            options.Configure<IndexModel>(
                 toolbar =>
                 {
                     toolbar.AddButton(

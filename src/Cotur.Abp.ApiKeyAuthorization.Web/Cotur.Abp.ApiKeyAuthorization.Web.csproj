@@ -14,7 +14,7 @@
   <ItemGroup>
     <PackageReference Include="Volo.Abp.AutoMapper" Version="5.2.2" />
     <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared" Version="5.2.2" />
-    <PackageReference Include="Volo.Abp.Identity.Web" Version="5.2.2" />
+    <PackageReference Include="Volo.Abp.PermissionManagement.Web" Version="5.2.2" />
   </ItemGroup>
 
   <ItemGroup>
@@ -36,6 +36,10 @@
     <Content Remove="Components\**\*.js" />
     <Content Remove="Components\**\*.css" />
     <Content Remove="wwwroot\**\*.*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="Pages\ApiKeys\Index.cshtml" />
   </ItemGroup>
 
 </Project>

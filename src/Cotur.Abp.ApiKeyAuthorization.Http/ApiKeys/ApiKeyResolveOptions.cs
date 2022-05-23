@@ -1,4 +1,6 @@
-﻿namespace Cotur.Abp.ApiKeyAuthorization.Core.ApiKeys;
+﻿using Cotur.Abp.ApiKeyAuthorization.Core.ApiKeys;
+
+namespace Cotur.Abp.ApiKeyAuthorization.Http.ApiKeys;
 
 public class ApiKeyResolveOptions
 {

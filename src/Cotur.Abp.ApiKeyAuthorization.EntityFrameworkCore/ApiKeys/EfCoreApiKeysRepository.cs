@@ -15,10 +15,20 @@ public class EfCoreApiKeysRepository : EfCoreRepository<ApiKeyAuthorizationDbCon
     {
     }
 
-    public async Task<ApiKey> FindByKeyAsync(string key, CancellationToken cancellationToken = default)
+    public async Task<ApiKey> FindByKeyAsync(
+        string key,
+        bool isActive, 
+        DateTime? expireAtStart = null,
+        DateTime? expireAtEnd = null,
+        CancellationToken cancellationToken = default)
     {
         var dbSet = await GetDbSetAsync();
 
-        return await dbSet.Where(x => x.Key == key).FirstOrDefaultAsync(GetCancellationToken(cancellationToken));
+        var query = dbSet.Where(x => x.Key == key)
+            .Where(x => x.Active == isActive)
+            .WhereIf(expireAtStart.HasValue, x => x.ExpireAt >= expireAtStart)
+            .WhereIf(expireAtEnd.HasValue, x => x.ExpireAt <= expireAtEnd);
+        
+        return await query.FirstOrDefaultAsync(GetCancellationToken(cancellationToken));
     }
 }

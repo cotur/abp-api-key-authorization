@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Volo.Abp.AspNetCore.Mvc" Version="5.2.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Cotur.Abp.ApiKeyAuthorization.Core\Cotur.Abp.ApiKeyAuthorization.Core.csproj" />
+    </ItemGroup>
+    
+</Project>

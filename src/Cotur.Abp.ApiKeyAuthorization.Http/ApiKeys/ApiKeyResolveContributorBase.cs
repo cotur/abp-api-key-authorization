@@ -1,4 +1,4 @@
-﻿namespace Cotur.Abp.ApiKeyAuthorization.Core.ApiKeys;
+﻿namespace Cotur.Abp.ApiKeyAuthorization.Http.ApiKeys;
 
 public abstract class ApiKeyResolveContributorBase : IApiKeyResolveContributor
 {

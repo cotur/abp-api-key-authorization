@@ -1,11 +1,11 @@
 using System.IO;
 using System.Threading.Tasks;
-using Cotur.Abp.ApiKeyAuthorization.ApiKeys;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using Cotur.Abp.ApiKeyAuthorization.EntityFrameworkCore;
+using Cotur.Abp.ApiKeyAuthorization.Http.ApiKeys;
 using Cotur.Abp.ApiKeyAuthorization.MultiTenancy;
 using Cotur.Abp.ApiKeyAuthorization.Web;
 using Microsoft.OpenApi.Models;

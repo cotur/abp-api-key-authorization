@@ -1,6 +1,4 @@
-﻿using Cotur.Abp.ApiKeyAuthorization.ApiKeys;
-using Cotur.Abp.ApiKeyAuthorization.Core;
-using Cotur.Abp.ApiKeyAuthorization.Core.ApiKeys;
+﻿using Cotur.Abp.ApiKeyAuthorization.Http;
 using Localization.Resources.AbpUi;
 using Cotur.Abp.ApiKeyAuthorization.Localization;
 using Volo.Abp.AspNetCore.Mvc;
@@ -12,7 +10,7 @@ namespace Cotur.Abp.ApiKeyAuthorization;
 
 [DependsOn(
     typeof(ApiKeyAuthorizationApplicationContractsModule),
-    typeof(CoturAbpApiKeyAuthorizationCoreModule),
+    typeof(ApiKeyAuthorizationHttpModule),
     typeof(AbpAspNetCoreMvcModule))]
 public class ApiKeyAuthorizationHttpApiModule : AbpModule
 {
@@ -21,12 +19,6 @@ public class ApiKeyAuthorizationHttpApiModule : AbpModule
         PreConfigure<IMvcBuilder>(mvcBuilder =>
         {
             mvcBuilder.AddApplicationPartIfNotExists(typeof(ApiKeyAuthorizationHttpApiModule).Assembly);
-        });
-        
-        Configure<ApiKeyResolveOptions>(o =>
-        {
-            o.ApiKeyResolvers.Add(new HeaderApiKeyResolveContributor());
-            o.ApiKeyResolvers.Add(new QueryStringApiKeyResolveContributor());
         });
     }
 

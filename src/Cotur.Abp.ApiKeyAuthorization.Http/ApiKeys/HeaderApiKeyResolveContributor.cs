@@ -1,12 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Cotur.Abp.ApiKeyAuthorization.Core.ApiKeys;
+﻿using Cotur.Abp.ApiKeyAuthorization.Core.ApiKeys;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace Cotur.Abp.ApiKeyAuthorization.ApiKeys;
+namespace Cotur.Abp.ApiKeyAuthorization.Http.ApiKeys;
 
 public class HeaderApiKeyResolveContributor : HttpApiKeyResolveContributorBase
 {
@@ -17,24 +14,21 @@ public class HeaderApiKeyResolveContributor : HttpApiKeyResolveContributorBase
     {
         if (httpContext.Request.Headers.IsNullOrEmpty())
         {
-            return Task.FromResult((string)null);
+            return Task.FromResult(string.Empty);
         }
 
-        // TODO: make optional
-        var apiKey = "api-key";
-
-        var apiKeyHeader = httpContext.Request.Headers[apiKey];
-        if (apiKeyHeader == string.Empty || apiKeyHeader.Count < 1)
+        var apiKey = httpContext.Request.Headers[context.ApiKeyName];
+        if (apiKey == string.Empty || apiKey.Count < 1)
         {
-            return Task.FromResult((string)null);
+            return Task.FromResult(string.Empty);
         }
 
-        if (apiKeyHeader.Count > 1)
+        if (apiKey.Count > 1)
         {
-            Log(context, $"HTTP request includes more than one {apiKey} header value. First one will be used. All of them: {apiKeyHeader.JoinAsString(", ")}");
+            Log(context, $"HTTP request includes more than one {context.ApiKeyName} header value. First one will be used. All of them: {apiKey.JoinAsString(", ")}");
         }
 
-        return Task.FromResult(apiKeyHeader.First());
+        return Task.FromResult(apiKey.First());
     }
 
     protected virtual void Log(IApiKeyResolveContext context, string text)

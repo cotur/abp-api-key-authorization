@@ -6,26 +6,16 @@ namespace Cotur.Abp.ApiKeyAuthorization.Core.ApiKeys;
 
 public class ApiKeyPrincipleProvider : IApiKeyPrincipleProvider, ITransientDependency
 {
-    private readonly IEnumerable<IApiKeyStorage> _apiKeyStorages;
+    private readonly IApiKeyStorage _apiKeyStorage;
 
-    public ApiKeyPrincipleProvider(IEnumerable<IApiKeyStorage> apiKeyStorages)
+    public ApiKeyPrincipleProvider(IApiKeyStorage apiKeyStorage)
     {
-        _apiKeyStorages = apiKeyStorages;
+        _apiKeyStorage = apiKeyStorage;
     }
 
-    public async Task<ClaimsPrincipal?> GetApiKeyPrincipleOrNullAsync(string key)
+    public virtual async Task<ClaimsPrincipal?> GetApiKeyPrincipleOrNullAsync(string key)
     {
-        ApiKeyInfo? apiKeyInfo = null;
-
-        foreach (var apiKeyStorage in _apiKeyStorages)
-        {
-            apiKeyInfo = await apiKeyStorage.FindAsync(key);
-
-            if (apiKeyInfo != null)
-            {
-                break;
-            }
-        }
+       var apiKeyInfo = await _apiKeyStorage.FindAsync(key);
         
         if (apiKeyInfo == null || apiKeyInfo.Active == false)
         {
@@ -35,12 +25,12 @@ public class ApiKeyPrincipleProvider : IApiKeyPrincipleProvider, ITransientDepen
         return GetApiKeyPrinciple(apiKeyInfo);
     }
 
-    private ClaimsPrincipal GetApiKeyPrinciple(ApiKeyInfo? apiKeyInfo)
+    protected virtual ClaimsPrincipal GetApiKeyPrinciple(ApiKeyInfo apiKeyInfo)
     {
         var claims = new List<Claim>
         {
-            new Claim(AbpClaimTypes.UserId, apiKeyInfo.Id),
-            new Claim(AbpClaimTypes.TenantId, apiKeyInfo.TenantId)
+            new(AbpClaimTypes.UserId, apiKeyInfo.Id),
+            new(AbpClaimTypes.TenantId, apiKeyInfo.TenantId)
         };
         
         return new ClaimsPrincipal(new ClaimsIdentity(claims, ApiKeyAuthorizationConsts.API_KEY_AUTHORIZATION_METHOD));

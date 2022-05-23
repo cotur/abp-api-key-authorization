@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Cotur.Abp.ApiKeyAuthorization.Web.Pages.Identity.ApiKeys;
+namespace Cotur.Abp.ApiKeyAuthorization.Web.Pages.ApiKeys;
 
 public class IndexModel : ApiKeyAuthorizationPageModel
 {

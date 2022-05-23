@@ -14,7 +14,7 @@
 
     var _dataTable = null;
 
-    abp.ui.extensions.entityActions.get('identity.apiKeys').addContributor(
+    abp.ui.extensions.entityActions.get('apiKeyAuthorization.apiKeys').addContributor(
         function(actionList) {
             return actionList.addManyTail(
                 [
@@ -67,14 +67,14 @@
         }
     );
 
-    abp.ui.extensions.tableColumns.get('identity.apiKeys').addContributor(
+    abp.ui.extensions.tableColumns.get('apiKeyAuthorization.apiKeys').addContributor(
         function (columnList) {
             columnList.addManyTail(
                 [
                     {
                         title: l("Actions"),
                         rowAction: {
-                            items: abp.ui.extensions.entityActions.get('identity.apiKeys').actions.toArray()
+                            items: abp.ui.extensions.entityActions.get('apiKeyAuthorization.apiKeys').actions.toArray()
                         }
                     },
                     {
@@ -96,6 +96,10 @@
                                 return  'Active';
                             }
                         }
+                    },
+                    {
+                        title: l('ExpireAt'),
+                        data: 'expireAt'
                     }
                 ]
             );
@@ -104,7 +108,7 @@
     );
 
     $(function () {
-        var _$wrapper = $('#IdentityApiKeysWrapper');
+        var _$wrapper = $('#ApiKeysWrapper');
         var _$table = _$wrapper.find('table');
         _dataTable = _$table.DataTable(
             abp.libs.datatables.normalizeConfiguration({
@@ -116,7 +120,7 @@
                 ajax: abp.libs.datatables.createAjax(
                     _identityApiKeyAppService.getList
                 ),
-                columnDefs: abp.ui.extensions.tableColumns.get('identity.apiKeys').columns.toArray()
+                columnDefs: abp.ui.extensions.tableColumns.get('apiKeyAuthorization.apiKeys').columns.toArray()
             })
         );
 

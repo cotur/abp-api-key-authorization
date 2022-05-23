@@ -8,7 +8,11 @@ public class ApiKeyPermissionManagementProvider : PermissionManagementProvider
 {
     public override string Name => "ApiKey";
     
-    public ApiKeyPermissionManagementProvider(IPermissionGrantRepository permissionGrantRepository, IGuidGenerator guidGenerator, ICurrentTenant currentTenant) : base(permissionGrantRepository, guidGenerator, currentTenant)
+    public ApiKeyPermissionManagementProvider(
+        IPermissionGrantRepository permissionGrantRepository,
+        IGuidGenerator guidGenerator,
+        ICurrentTenant currentTenant) 
+        : base(permissionGrantRepository, guidGenerator, currentTenant)
     {
     }
 }

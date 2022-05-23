@@ -8,8 +8,7 @@ namespace Cotur.Abp.ApiKeyAuthorization;
 [DependsOn(
     typeof(ApiKeyAuthorizationDomainModule),
     typeof(ApiKeyAuthorizationApplicationContractsModule),
-    typeof(AbpDddApplicationModule),
-    typeof(AbpAutoMapperModule)
+    typeof(AbpDddApplicationModule)
     )]
 public class ApiKeyAuthorizationApplicationModule : AbpModule
 {

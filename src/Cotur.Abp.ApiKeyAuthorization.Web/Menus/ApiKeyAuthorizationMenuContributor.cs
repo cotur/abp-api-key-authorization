@@ -22,10 +22,9 @@ public class ApiKeyAuthorizationMenuContributor : IMenuContributor
     {
         var l = context.GetLocalizer<ApiKeyAuthorizationResource>();
 
-        // todo add to identity
-        var identityMenuItem = context.Menu.GetAdministration();
+        var administration = context.Menu.GetAdministration();
         
-        identityMenuItem.AddItem(new ApplicationMenuItem(ApiKeyAuthorizationMenuNames.ApiKeys, l["ApiKeys"], "~/Identity/ApiKeys", "fa fa-key-o").RequirePermissions(ApiKeyAuthorizationPermissions.ApiKeys.Default));
+        administration.AddItem(new ApplicationMenuItem(ApiKeyAuthorizationMenuNames.ApiKeys, l["ApiKeys"], "~/ApiKeys", "fa fa-key-o").RequirePermissions(ApiKeyAuthorizationPermissions.ApiKeys.Default));
         
         return Task.CompletedTask;
     }

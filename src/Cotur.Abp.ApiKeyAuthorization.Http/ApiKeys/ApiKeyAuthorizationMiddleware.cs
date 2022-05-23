@@ -1,11 +1,10 @@
-﻿using System.Threading.Tasks;
-using Cotur.Abp.ApiKeyAuthorization.Core.ApiKeys;
+﻿using Cotur.Abp.ApiKeyAuthorization.Core.ApiKeys;
 using Microsoft.AspNetCore.Http;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Security.Claims;
 using Volo.Abp.Users;
 
-namespace Cotur.Abp.ApiKeyAuthorization.ApiKeys;
+namespace Cotur.Abp.ApiKeyAuthorization.Http.ApiKeys;
 
 public class ApiKeyAuthorizationMiddleware : IMiddleware, ITransientDependency
 {
@@ -26,8 +25,10 @@ public class ApiKeyAuthorizationMiddleware : IMiddleware, ITransientDependency
         _currentUser = currentUser;
     }
 
-    public async Task InvokeAsync(HttpContext context, RequestDelegate next)
+    public virtual async Task InvokeAsync(HttpContext context, RequestDelegate next)
     {
+        // TODO: it will run only API calls
+        
         if (_currentUser.IsAuthenticated)
         {
             await next(context);

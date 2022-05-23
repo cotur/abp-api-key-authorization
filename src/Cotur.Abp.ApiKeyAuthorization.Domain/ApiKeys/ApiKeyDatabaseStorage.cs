@@ -2,20 +2,29 @@
 using System.Threading.Tasks;
 using Cotur.Abp.ApiKeyAuthorization.Core.ApiKeys;
 using Volo.Abp.DependencyInjection;
+using Volo.Abp.ObjectMapping;
+using Volo.Abp.Timing;
 
 namespace Cotur.Abp.ApiKeyAuthorization.ApiKeys;
 
 public class ApiKeyDatabaseStorage : IApiKeyStorage, ITransientDependency
 {
     // TODO : implement caching
+    private readonly IObjectMapper _objectMapper;
     private readonly IApiKeyRepository _apiKeyRepository;
+    private readonly IClock _clock;
 
-    public ApiKeyDatabaseStorage(IApiKeyRepository apiKeyRepository)
+    public ApiKeyDatabaseStorage(
+        IObjectMapper objectMapper,
+        IApiKeyRepository apiKeyRepository,
+        IClock clock)
     {
+        _objectMapper = objectMapper;
         _apiKeyRepository = apiKeyRepository;
+        _clock = clock;
     }
 
-    public async Task<ApiKeyInfo> FindAsync(Guid id)
+    public virtual async Task<ApiKeyInfo> FindAsync(Guid id)
     {
         var apiKey = await _apiKeyRepository.FindAsync(id);
 
@@ -24,32 +33,18 @@ public class ApiKeyDatabaseStorage : IApiKeyStorage, ITransientDependency
             return null;
         }
 
-        return CreateApiKeyInfo(apiKey);
+        return _objectMapper.Map<ApiKey, ApiKeyInfo>(apiKey);
     }
 
-    public async Task<ApiKeyInfo> FindAsync(string key)
+    public virtual async Task<ApiKeyInfo> FindAsync(string key)
     {
-        var apiKey = await _apiKeyRepository.FindByKeyAsync(key);
+        var apiKey = await _apiKeyRepository.FindByKeyAsync(key, isActive: true);
         
         if (apiKey == null)
         {
             return null;
         }
-        
-        return CreateApiKeyInfo(apiKey);
-    }
 
-    protected virtual ApiKeyInfo CreateApiKeyInfo(ApiKey apiKey)
-    {
-        var apiKeyInfo = new ApiKeyInfo
-        {
-            Id = apiKey.Id.ToString(),
-            Name = apiKey.Name,
-            Key = apiKey.Key,
-            TenantId = apiKey.TenantId?.ToString() ?? string.Empty,
-            Active = apiKey.Active
-        };
-
-        return apiKeyInfo;
+        return _objectMapper.Map<ApiKey, ApiKeyInfo>(apiKey);
     }
 }
