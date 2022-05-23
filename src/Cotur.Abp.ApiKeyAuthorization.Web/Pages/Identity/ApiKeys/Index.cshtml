@@ -1,0 +1,48 @@
+﻿@page
+@using Microsoft.Extensions.Localization
+@using Cotur.Abp.ApiKeyAuthorization.Localization
+@using Cotur.Abp.ApiKeyAuthorization.Web.Menus
+@using Cotur.Abp.ApiKeyAuthorization.Web.Pages.Identity.ApiKeys
+@using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Card
+@using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Grid
+@using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Table
+@using Volo.Abp.AspNetCore.Mvc.UI.Bundling.TagHelpers
+@using Volo.Abp.AspNetCore.Mvc.UI.Layout
+@using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared.Pages.Shared.Components.AbpPageToolbar
+@model Cotur.Abp.ApiKeyAuthorization.Web.Pages.Identity.ApiKeys.IndexModel
+@inject IStringLocalizer<ApiKeyAuthorizationResource> L
+@inject IPageLayout PageLayout
+
+@{
+    PageLayout.Content.Title = L["ApiKeys"].Value;
+    PageLayout.Content.BreadCrumb.Add(L["Menu:IdentityManagement"].Value);
+    PageLayout.Content.MenuItemName = ApiKeyAuthorizationMenuNames.ApiKeys;
+}
+
+@section styles {
+    <abp-style-bundle name="@typeof(IndexModel).FullName">
+        <abp-style src="/Pages/AbpPermissionManagement/permission-management-modal.css" />
+    </abp-style-bundle>
+}
+@section scripts {
+    <abp-script-bundle name="@typeof(IndexModel).FullName">
+        <abp-script src="/Pages/AbpPermissionManagement/permission-management-modal.js" />
+        <abp-script src="/Pages/identity/ApiKeys/index.js" />
+    </abp-script-bundle>
+}
+
+<abp-card id="IdentityApiKeysWrapper">
+    <abp-card-header>
+        <abp-row>
+            <abp-column size-md="_6">
+                <abp-card-title>@L["ApiKeys"]</abp-card-title>
+            </abp-column>
+            <abp-column size-md="_6" class="text-end">
+                @await Component.InvokeAsync(typeof(AbpPageToolbarViewComponent), new { pageName = typeof(IndexModel).FullName })
+            </abp-column>
+        </abp-row>
+    </abp-card-header>
+    <abp-card-body>
+        <abp-table striped-rows="true" class="nowrap"></abp-table>
+    </abp-card-body>
+</abp-card>

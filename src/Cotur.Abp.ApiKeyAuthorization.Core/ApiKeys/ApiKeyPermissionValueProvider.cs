@@ -18,7 +18,7 @@ public class ApiKeyPermissionValueProvider : PermissionValueProvider
         var authMethod = context.Principal.Identity?.AuthenticationType;
         var apiKeyUserId = context.Principal?.FindFirst(AbpClaimTypes.UserId)?.Value;
 
-        if (authMethod != ApiKeyConsts.API_KEY_AUTHORIZATION_METHOD ||
+        if (authMethod != ApiKeyAuthorizationConsts.API_KEY_AUTHORIZATION_METHOD ||
             apiKeyUserId == null)
         {
             return PermissionGrantResult.Undefined;
@@ -37,7 +37,7 @@ public class ApiKeyPermissionValueProvider : PermissionValueProvider
         var authMethod = context.Principal.Identity?.AuthenticationType;
         var apiKeyUserId = context.Principal?.FindFirst(AbpClaimTypes.UserId)?.Value;
 
-        if (authMethod != ApiKeyConsts.API_KEY_AUTHORIZATION_METHOD ||
+        if (authMethod != ApiKeyAuthorizationConsts.API_KEY_AUTHORIZATION_METHOD ||
             apiKeyUserId == null)
         {
             return new MultiplePermissionGrantResult(permissionNames);

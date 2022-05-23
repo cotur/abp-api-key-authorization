@@ -6,17 +6,27 @@ namespace Cotur.Abp.ApiKeyAuthorization.Core.ApiKeys;
 
 public class ApiKeyPrincipleProvider : IApiKeyPrincipleProvider, ITransientDependency
 {
-    private readonly IApiKeyStorage _apiKeyStorage;
+    private readonly IEnumerable<IApiKeyStorage> _apiKeyStorages;
 
-    public ApiKeyPrincipleProvider(IApiKeyStorage apiKeyStorage)
+    public ApiKeyPrincipleProvider(IEnumerable<IApiKeyStorage> apiKeyStorages)
     {
-        _apiKeyStorage = apiKeyStorage;
+        _apiKeyStorages = apiKeyStorages;
     }
 
     public async Task<ClaimsPrincipal?> GetApiKeyPrincipleOrNullAsync(string key)
     {
-        var apiKeyInfo = await _apiKeyStorage.GetOrNullAsync(key);
+        ApiKeyInfo? apiKeyInfo = null;
 
+        foreach (var apiKeyStorage in _apiKeyStorages)
+        {
+            apiKeyInfo = await apiKeyStorage.FindAsync(key);
+
+            if (apiKeyInfo != null)
+            {
+                break;
+            }
+        }
+        
         if (apiKeyInfo == null || apiKeyInfo.Active == false)
         {
             return null;
@@ -25,7 +35,7 @@ public class ApiKeyPrincipleProvider : IApiKeyPrincipleProvider, ITransientDepen
         return GetApiKeyPrinciple(apiKeyInfo);
     }
 
-    private ClaimsPrincipal GetApiKeyPrinciple(ApiKeyInfo apiKeyInfo)
+    private ClaimsPrincipal GetApiKeyPrinciple(ApiKeyInfo? apiKeyInfo)
     {
         var claims = new List<Claim>
         {
@@ -33,6 +43,6 @@ public class ApiKeyPrincipleProvider : IApiKeyPrincipleProvider, ITransientDepen
             new Claim(AbpClaimTypes.TenantId, apiKeyInfo.TenantId)
         };
         
-        return new ClaimsPrincipal(new ClaimsIdentity(claims, ApiKeyConsts.API_KEY_AUTHORIZATION_METHOD));
+        return new ClaimsPrincipal(new ClaimsIdentity(claims, ApiKeyAuthorizationConsts.API_KEY_AUTHORIZATION_METHOD));
     }
 }

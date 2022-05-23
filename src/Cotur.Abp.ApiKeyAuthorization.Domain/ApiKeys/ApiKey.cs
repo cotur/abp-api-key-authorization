@@ -5,7 +5,7 @@ using Volo.Abp.MultiTenancy;
 
 namespace Cotur.Abp.ApiKeyAuthorization.ApiKeys;
 
-public class ApiKey : FullAuditedEntity<Guid>, IMultiTenant
+public class ApiKey : FullAuditedAggregateRoot<Guid>, IMultiTenant
 {
     public Guid? TenantId { get; protected set; }
     public string Name { get; protected set; }

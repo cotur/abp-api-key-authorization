@@ -7,4 +7,5 @@ public class ApiKeyDto : EntityDto<Guid>
 {
     public string Name { get; set; }
     public string Key { get; set; }
+    public bool Active { get; set; }
 }

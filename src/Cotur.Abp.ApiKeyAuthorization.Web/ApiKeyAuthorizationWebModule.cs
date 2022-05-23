@@ -9,6 +9,10 @@ using Volo.Abp.Modularity;
 using Volo.Abp.UI.Navigation;
 using Volo.Abp.VirtualFileSystem;
 using Cotur.Abp.ApiKeyAuthorization.Permissions;
+using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared.PageToolbars;
+using Volo.Abp.Identity;
+using Volo.Abp.Identity.Localization;
+using Volo.Abp.Localization;
 
 namespace Cotur.Abp.ApiKeyAuthorization.Web;
 
@@ -52,7 +56,23 @@ public class ApiKeyAuthorizationWebModule : AbpModule
 
         Configure<RazorPagesOptions>(options =>
         {
-                //Configure authorization.
-            });
+            options.Conventions.AuthorizePage("/Identity/ApiKeys/Index", ApiKeyAuthorizationPermissions.ApiKeys.Default);
+        });
+        
+        
+        Configure<AbpPageToolbarOptions>(options =>
+        {
+            options.Configure<Cotur.Abp.ApiKeyAuthorization.Web.Pages.Identity.ApiKeys.IndexModel>(
+                toolbar =>
+                {
+                    toolbar.AddButton(
+                        LocalizableString.Create<ApiKeyAuthorizationResource>("NewApiKey"),
+                        icon: "plus",
+                        name: "CreateApiKey",
+                        requiredPolicyName: ApiKeyAuthorizationPermissions.ApiKeys.Create
+                    );
+                }
+            );
+        });
     }
 }

@@ -1,6 +1,6 @@
 using System.IO;
-using System.Reflection;
 using System.Threading.Tasks;
+using Cotur.Abp.ApiKeyAuthorization.ApiKeys;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
@@ -9,7 +9,6 @@ using Cotur.Abp.ApiKeyAuthorization.EntityFrameworkCore;
 using Cotur.Abp.ApiKeyAuthorization.MultiTenancy;
 using Cotur.Abp.ApiKeyAuthorization.Web;
 using Microsoft.OpenApi.Models;
-using Swashbuckle.AspNetCore.Swagger;
 using Volo.Abp;
 using Volo.Abp.Account;
 using Volo.Abp.Account.Web;
@@ -39,7 +38,6 @@ using Volo.Abp.Swashbuckle;
 using Volo.Abp.TenantManagement;
 using Volo.Abp.TenantManagement.EntityFrameworkCore;
 using Volo.Abp.TenantManagement.Web;
-using Volo.Abp.Threading;
 using Volo.Abp.VirtualFileSystem;
 
 namespace Cotur.Abp.ApiKeyAuthorization;
@@ -88,6 +86,7 @@ public class ApiKeyAuthorizationWebUnifiedModule : AbpModule
             options.UseSqlServer();
         });
 
+        
         if (hostingEnvironment.IsDevelopment())
         {
             Configure<AbpVirtualFileSystemOptions>(options =>
@@ -168,6 +167,8 @@ public class ApiKeyAuthorizationWebUnifiedModule : AbpModule
 
         app.UseAbpRequestLocalization();
         app.UseAuthorization();
+
+        app.UseApiKeyAuthorization();
 
         app.UseSwagger();
         app.UseAbpSwaggerUI(options =>

@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Cotur.Abp.ApiKeyAuthorization.ApiKeys;
+using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.Modularity;
 
@@ -14,9 +15,11 @@ public class ApiKeyAuthorizationEntityFrameworkCoreModule : AbpModule
     {
         context.Services.AddAbpDbContext<ApiKeyAuthorizationDbContext>(options =>
         {
-                /* Add custom repositories here. Example:
-                 * options.AddRepository<Question, EfCoreQuestionRepository>();
-                 */
+            options.AddDefaultRepositories<IApiKeyAuthorizationDbContext>(includeAllEntities: true);
+            
+            options.AddRepository<ApiKey, EfCoreApiKeysRepository>();
         });
+
+        context.Services.AddTransient<IApiKeyRepository, EfCoreApiKeysRepository>();
     }
 }

@@ -1,10 +1,16 @@
-﻿using System;
-using Volo.Abp.Application.Dtos;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Cotur.Abp.ApiKeyAuthorization.ApiKeys;
 
-public class ApiKeyUpdateDto : EntityDto<Guid>
+public class ApiKeyUpdateDto
 {
+    [Required]
+    [MaxLength(ApiKeyConsts.MaxNameLength)]
     public string Name { get; set; }
+    
+    [Required]
+    [MaxLength(ApiKeyConsts.MaxKeyLength)]
     public string Key { get; set; }
+    
+    public bool Active { get; set; }
 }

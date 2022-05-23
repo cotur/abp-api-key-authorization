@@ -10,10 +10,11 @@ public class ApiKeyAuthorizationPermissionDefinitionProvider : PermissionDefinit
     {
         var apiKeyGroup = context.AddGroup(ApiKeyAuthorizationPermissions.GroupName, L("Permission:ApiKeyAuthorization"));
         
-        var apiKeyPermissions = apiKeyGroup.AddPermission(ApiKeyAuthorizationPermissions.ApiKeys.Default, L("ApiKeys:ApiKeyManagement"));
-        apiKeyPermissions.AddChild(ApiKeyAuthorizationPermissions.ApiKeys.Create, L("ApiKeys:Create"));
-        apiKeyPermissions.AddChild(ApiKeyAuthorizationPermissions.ApiKeys.Update, L("ApiKeys:Edit"));
-        apiKeyPermissions.AddChild(ApiKeyAuthorizationPermissions.ApiKeys.Delete, L("ApiKeys:Delete"));
+        var apiKeyPermissions = apiKeyGroup.AddPermission(ApiKeyAuthorizationPermissions.ApiKeys.Default, L("Permission:ApiKeys:ApiKeyManagement"));
+        apiKeyPermissions.AddChild(ApiKeyAuthorizationPermissions.ApiKeys.Create, L("Permission:ApiKeys:Create"));
+        apiKeyPermissions.AddChild(ApiKeyAuthorizationPermissions.ApiKeys.Update, L("Permission:ApiKeys:Edit"));
+        apiKeyPermissions.AddChild(ApiKeyAuthorizationPermissions.ApiKeys.Delete, L("Permission:ApiKeys:Delete"));
+        apiKeyPermissions.AddChild(ApiKeyAuthorizationPermissions.ApiKeys.ManagePermissions, L("Permission:ApiKeys:ManagePermissions"));
     }
 
     private static LocalizableString L(string name)
