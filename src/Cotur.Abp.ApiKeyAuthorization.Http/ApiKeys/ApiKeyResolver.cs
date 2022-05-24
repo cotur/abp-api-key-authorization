@@ -1,5 +1,4 @@
-﻿using Cotur.Abp.ApiKeyAuthorization.Core.ApiKeys;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Volo.Abp.DependencyInjection;
 

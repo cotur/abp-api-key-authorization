@@ -27,7 +27,6 @@ public class ApiKeyAuthorizationMiddleware : IMiddleware, ITransientDependency
 
     public virtual async Task InvokeAsync(HttpContext context, RequestDelegate next)
     {
-        // TODO: it will run only API calls
         
         if (_currentUser.IsAuthenticated)
         {

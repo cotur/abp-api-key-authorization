@@ -3,7 +3,6 @@ using Cotur.Abp.ApiKeyAuthorization.Core;
 using Cotur.Abp.ApiKeyAuthorization.Core.ApiKeys;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.AutoMapper;
-using Volo.Abp.Caching;
 using Volo.Abp.Domain;
 using Volo.Abp.Modularity;
 using Volo.Abp.PermissionManagement;

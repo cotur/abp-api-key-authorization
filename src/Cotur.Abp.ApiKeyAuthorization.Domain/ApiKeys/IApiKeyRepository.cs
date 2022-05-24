@@ -8,5 +8,11 @@ namespace Cotur.Abp.ApiKeyAuthorization.ApiKeys;
 
 public interface IApiKeyRepository : IBasicRepository<ApiKey, Guid>
 {
-    Task<ApiKey> FindByKeyAsync([NotNull] string key, bool isActive, DateTime? expireAtStart = null, DateTime? expireAtEnd = null, CancellationToken cancellationToken = default);
+    Task<ApiKey> FindByKeyAsync(
+        [NotNull] string key, 
+        bool isActive, 
+        bool expireAtCanBeNull = false,
+        DateTime? expireAtStart = null, 
+        DateTime? expireAtEnd = null, 
+        CancellationToken cancellationToken = default);
 }

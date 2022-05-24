@@ -1,5 +1,4 @@
-﻿using Cotur.Abp.ApiKeyAuthorization.Core.ApiKeys;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 
 namespace Cotur.Abp.ApiKeyAuthorization.Http.ApiKeys;
 

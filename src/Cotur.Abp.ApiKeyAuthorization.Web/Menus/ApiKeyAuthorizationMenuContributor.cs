@@ -24,7 +24,7 @@ public class ApiKeyAuthorizationMenuContributor : IMenuContributor
 
         var administration = context.Menu.GetAdministration();
         
-        administration.AddItem(new ApplicationMenuItem(ApiKeyAuthorizationMenuNames.ApiKeys, l["ApiKeys"], "~/ApiKeys", "fa fa-key-o").RequirePermissions(ApiKeyAuthorizationPermissions.ApiKeys.Default));
+        administration.AddItem(new ApplicationMenuItem(ApiKeyAuthorizationMenuNames.ApiKeys, l["ApiKeys"], "~/ApiKeys", "fa fa-key").RequirePermissions(ApiKeyAuthorizationPermissions.ApiKeys.Default));
         
         return Task.CompletedTask;
     }

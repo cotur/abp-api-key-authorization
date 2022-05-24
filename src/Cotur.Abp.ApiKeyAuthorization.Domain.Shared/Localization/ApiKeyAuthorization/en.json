@@ -2,6 +2,13 @@
   "culture": "en",
   "texts": {
     "MyAccount":  "My account",
-    "SamplePageMessage": "A sample page for the ApiKeyAuthorization module"
+    "SamplePageMessage": "A sample page for the ApiKeyAuthorization module",
+    "ApiKeys": "Api Keys",
+    "Permission:ApiKeys:ApiKeyManagement": "Api Key Management",
+    "Permission:ApiKeys:Create": "Create",
+    "Permission:ApiKeys:Edit": "Update",
+    "Permission:ApiKeys:Delete": "Delete",
+    "Permission:ApiKeys:ManagePermissions": "Manage Permissions",
+    "NewApiKey": "New Api Key"
   }
 }

@@ -1,5 +1,4 @@
-﻿using Cotur.Abp.ApiKeyAuthorization.Core.ApiKeys;
-using JetBrains.Annotations;
+﻿using JetBrains.Annotations;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;

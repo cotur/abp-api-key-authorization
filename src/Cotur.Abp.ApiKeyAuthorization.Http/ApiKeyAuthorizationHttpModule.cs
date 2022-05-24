@@ -1,4 +1,5 @@
 ﻿using Cotur.Abp.ApiKeyAuthorization.Http.ApiKeys;
+using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.AspNetCore.Mvc;
 using Volo.Abp.Modularity;
 
@@ -11,10 +12,9 @@ public class ApiKeyAuthorizationHttpModule : AbpModule
 {
     public override void ConfigureServices(ServiceConfigurationContext context)
     {
-        Configure<ApiKeyOptions>(o =>
-        {
-            o.ApiKeyName = "api-key";
-        });
+        var configuration = context.Services.GetConfiguration();
+        
+        Configure<ApiKeyOptions>(configuration.GetSection("apiKeys"));
         
         Configure<ApiKeyResolveOptions>(o =>
         {

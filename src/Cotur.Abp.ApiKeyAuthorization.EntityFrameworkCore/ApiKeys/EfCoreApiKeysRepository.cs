@@ -18,6 +18,7 @@ public class EfCoreApiKeysRepository : EfCoreRepository<ApiKeyAuthorizationDbCon
     public async Task<ApiKey> FindByKeyAsync(
         string key,
         bool isActive, 
+        bool expireAtCanBeNull = false,
         DateTime? expireAtStart = null,
         DateTime? expireAtEnd = null,
         CancellationToken cancellationToken = default)
@@ -26,8 +27,8 @@ public class EfCoreApiKeysRepository : EfCoreRepository<ApiKeyAuthorizationDbCon
 
         var query = dbSet.Where(x => x.Key == key)
             .Where(x => x.Active == isActive)
-            .WhereIf(expireAtStart.HasValue, x => x.ExpireAt >= expireAtStart)
-            .WhereIf(expireAtEnd.HasValue, x => x.ExpireAt <= expireAtEnd);
+            .WhereIf(expireAtStart.HasValue, x => expireAtCanBeNull ? x.ExpireAt == null || x.ExpireAt >= expireAtStart : x.ExpireAt >= expireAtStart)
+            .WhereIf(expireAtEnd.HasValue, x => expireAtCanBeNull ? x.ExpireAt == null || x.ExpireAt <= expireAtEnd : x.ExpireAt <= expireAtEnd);
         
         return await query.FirstOrDefaultAsync(GetCancellationToken(cancellationToken));
     }

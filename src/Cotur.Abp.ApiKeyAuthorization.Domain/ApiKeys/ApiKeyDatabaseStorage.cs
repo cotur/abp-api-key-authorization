@@ -38,7 +38,7 @@ public class ApiKeyDatabaseStorage : IApiKeyStorage, ITransientDependency
 
     public virtual async Task<ApiKeyInfo> FindAsync(string key)
     {
-        var apiKey = await _apiKeyRepository.FindByKeyAsync(key, isActive: true);
+        var apiKey = await _apiKeyRepository.FindByKeyAsync(key, isActive: true, expireAtCanBeNull: true, expireAtStart: _clock.Now);
         
         if (apiKey == null)
         {
