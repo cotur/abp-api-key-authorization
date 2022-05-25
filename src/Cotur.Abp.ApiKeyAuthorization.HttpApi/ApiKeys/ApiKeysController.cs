@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Cotur.Abp.ApiKeyAuthorization.Permissions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Volo.Abp.Application.Dtos;
 
 namespace Cotur.Abp.ApiKeyAuthorization.ApiKeys;
 
+[Authorize(ApiKeyAuthorizationPermissions.ApiKeys.Default)]
 [Area(ApiKeyAuthorizationRemoteServiceConsts.ModuleName)]
 [ControllerName("ApiKeys")]
 [Route("api/api-keys")]
@@ -31,6 +34,7 @@ public class ApiKeysController : ApiKeyAuthorizationController, IApiKeysAppServi
     }
 
     [HttpPost]
+    [Authorize(ApiKeyAuthorizationPermissions.ApiKeys.Create)]
     public Task<ApiKeyDto> CreateAsync(ApiKeyCreateDto input)
     {
         return _apiKeysAppService.CreateAsync(input);
@@ -38,6 +42,7 @@ public class ApiKeysController : ApiKeyAuthorizationController, IApiKeysAppServi
 
     [HttpPut]
     [Route("{id}")]
+    [Authorize(ApiKeyAuthorizationPermissions.ApiKeys.Update)]
     public Task<ApiKeyDto> UpdateAsync(Guid id, ApiKeyUpdateDto input)
     {
         return _apiKeysAppService.UpdateAsync(id, input);
@@ -45,6 +50,7 @@ public class ApiKeysController : ApiKeyAuthorizationController, IApiKeysAppServi
 
     [HttpDelete]
     [Route("{id}")]
+    [Authorize(ApiKeyAuthorizationPermissions.ApiKeys.Delete)]
     public Task DeleteAsync(Guid id)
     {
         return _apiKeysAppService.DeleteAsync(id);

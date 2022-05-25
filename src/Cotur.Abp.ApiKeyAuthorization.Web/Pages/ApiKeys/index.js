@@ -1,13 +1,20 @@
 (function ($) {
     var l = abp.localization.getResource('ApiKeyAuthorization');
 
-    var _identityApiKeyAppService = cotur.abp.apiKeyAuthorization.apiKeys.apiKeys;
-    var _editModal = new abp.ModalManager(
-        abp.appPath + 'Identity/ApiKeys/EditModal'
-    );
-    var _createModal = new abp.ModalManager(
-        abp.appPath + 'Identity/ApiKeys/CreateModal'
-    );
+    var _apiKeyAppService = cotur.abp.apiKeyAuthorization.apiKeys.apiKeys;
+    
+    var _editModal = new abp.ModalManager({
+        viewUrl: abp.appPath + 'ApiKeys/UpdateModal',
+        scriptUrl: "/Pages/ApiKeys/updateModal.js",
+        modalClass: "apiKeyUpdateModal"
+    });
+    
+    var _createModal = new abp.ModalManager({
+        viewUrl: abp.appPath + 'ApiKeys/CreateModal',
+        scriptUrl: "/Pages/ApiKeys/createModal.js",
+        modalClass: "apiKeyCreateModal"
+    });
+    
     var _permissionsModal = new abp.ModalManager(
         abp.appPath + 'AbpPermissionManagement/PermissionManagementModal'
     );
@@ -49,12 +56,12 @@
                         ),
                         confirmMessage: function (data) {
                             return l(
-                                'UserDeletionConfirmationMessage',
-                                data.record.userName
+                                'ApiKeyDeletionConfirmationMessage',
+                                data.record.name
                             );
                         },
                         action: function (data) {
-                            _identityApiKeyAppService
+                            _apiKeyAppService
                                 .delete(data.record.id)
                                 .then(function () {
                                     _dataTable.ajax.reload();
@@ -99,7 +106,15 @@
                     },
                     {
                         title: l('ExpireAt'),
-                        data: 'expireAt'
+                        data: 'expireAt',
+                        render: function (expireAt) {
+                            if (!expireAt) {
+                                return "";
+                            }
+
+                            var date = Date.parse(expireAt);
+                            return (new Date(date)).toLocaleDateString(abp.localization.currentCulture.name);
+                        }
                     }
                 ]
             );
@@ -118,7 +133,7 @@
                 scrollX: true,
                 paging: true,
                 ajax: abp.libs.datatables.createAjax(
-                    _identityApiKeyAppService.getList
+                    _apiKeyAppService.getList
                 ),
                 columnDefs: abp.ui.extensions.tableColumns.get('apiKeyAuthorization.apiKeys').columns.toArray()
             })

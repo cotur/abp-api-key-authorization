@@ -9,6 +9,7 @@
     "Permission:ApiKeys:Edit": "Update",
     "Permission:ApiKeys:Delete": "Delete",
     "Permission:ApiKeys:ManagePermissions": "Manage Permissions",
-    "NewApiKey": "New Api Key"
+    "NewApiKey": "New Api Key",
+    "ApiKeyDeletionConfirmationMessage": "Api key \"{0}\" will be deleted. Do you confirm?"
   }
 }

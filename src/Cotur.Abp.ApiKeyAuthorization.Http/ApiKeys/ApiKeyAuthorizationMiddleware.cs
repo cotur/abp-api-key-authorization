@@ -10,24 +10,21 @@ public class ApiKeyAuthorizationMiddleware : IMiddleware, ITransientDependency
 {
     private readonly IApiKeyResolver _apiKeyResolver;
     private readonly IApiKeyPrincipleProvider _apiKeyPrincipleProvider;
-    private readonly ICurrentPrincipalAccessor _currentPrincipalAccessor;
     private readonly ICurrentUser _currentUser;
+    
 
     public ApiKeyAuthorizationMiddleware(
         IApiKeyResolver apiKeyResolver,
         IApiKeyPrincipleProvider apiKeyPrincipleProvider,
-        ICurrentPrincipalAccessor currentPrincipalAccessor,
         ICurrentUser currentUser)
     {
         _apiKeyResolver = apiKeyResolver;
         _apiKeyPrincipleProvider = apiKeyPrincipleProvider;
-        _currentPrincipalAccessor = currentPrincipalAccessor;
         _currentUser = currentUser;
     }
 
     public virtual async Task InvokeAsync(HttpContext context, RequestDelegate next)
     {
-        
         if (_currentUser.IsAuthenticated)
         {
             await next(context);
@@ -49,10 +46,9 @@ public class ApiKeyAuthorizationMiddleware : IMiddleware, ITransientDependency
             await next(context);
             return;
         }
-
-        using (_currentPrincipalAccessor.Change(principal))
-        {
-            await next(context);
-        }
+        
+        context.User = principal;
+        
+        await next(context);
     }
 }

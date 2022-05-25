@@ -11,4 +11,6 @@ public class ApiKeyInfo
     public string TenantId { get; set; }
 
     public bool Active { get; set; }
+
+    public DateTime? ExpireAt { get; set; }
 }

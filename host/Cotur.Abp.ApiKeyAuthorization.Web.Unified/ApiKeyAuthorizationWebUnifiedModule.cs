@@ -166,9 +166,9 @@ public class ApiKeyAuthorizationWebUnifiedModule : AbpModule
         }
 
         app.UseAbpRequestLocalization();
+        app.UseApiKeyAuthorization();
         app.UseAuthorization();
 
-        app.UseApiKeyAuthorization();
 
         app.UseSwagger();
         app.UseAbpSwaggerUI(options =>
