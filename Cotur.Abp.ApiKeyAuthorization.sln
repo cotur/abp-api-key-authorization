@@ -61,7 +61,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cotur.Abp.ApiKeyAuthorizati
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cotur.Abp.ApiKeyAuthorization.Core", "src\Cotur.Abp.ApiKeyAuthorization.Core\Cotur.Abp.ApiKeyAuthorization.Core.csproj", "{F42F8484-A969-4C99-A476-52226962967A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cotur.Abp.ApiKeyAuthorization.Http", "src\Cotur.Abp.ApiKeyAuthorization.Http\Cotur.Abp.ApiKeyAuthorization.Http.csproj", "{BE2F299F-7000-4141-89F5-B667400CECAA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cotur.Abp.ApiKeyAuthorization.AspNetCore", "src\Cotur.Abp.ApiKeyAuthorization.AspNetCore\Cotur.Abp.ApiKeyAuthorization.AspNetCore.csproj", "{BE2F299F-7000-4141-89F5-B667400CECAA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

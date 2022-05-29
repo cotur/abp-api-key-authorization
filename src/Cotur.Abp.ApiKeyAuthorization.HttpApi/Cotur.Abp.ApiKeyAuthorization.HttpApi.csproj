@@ -10,7 +10,7 @@
   <ItemGroup>
     <PackageReference Include="Volo.Abp.AspNetCore.Mvc" Version="5.2.2" />
     <ProjectReference Include="..\Cotur.Abp.ApiKeyAuthorization.Application.Contracts\Cotur.Abp.ApiKeyAuthorization.Application.Contracts.csproj" />
-    <ProjectReference Include="..\Cotur.Abp.ApiKeyAuthorization.Http\Cotur.Abp.ApiKeyAuthorization.Http.csproj" />
+    <ProjectReference Include="..\Cotur.Abp.ApiKeyAuthorization.AspNetCore\Cotur.Abp.ApiKeyAuthorization.AspNetCore.csproj" />
   </ItemGroup>
 
 </Project>

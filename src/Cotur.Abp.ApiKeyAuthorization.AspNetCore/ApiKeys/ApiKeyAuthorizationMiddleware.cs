@@ -1,7 +1,6 @@
 ﻿using Cotur.Abp.ApiKeyAuthorization.Core.ApiKeys;
 using Microsoft.AspNetCore.Http;
 using Volo.Abp.DependencyInjection;
-using Volo.Abp.Security.Claims;
 using Volo.Abp.Users;
 
 namespace Cotur.Abp.ApiKeyAuthorization.Http.ApiKeys;
@@ -11,7 +10,6 @@ public class ApiKeyAuthorizationMiddleware : IMiddleware, ITransientDependency
     private readonly IApiKeyResolver _apiKeyResolver;
     private readonly IApiKeyPrincipleProvider _apiKeyPrincipleProvider;
     private readonly ICurrentUser _currentUser;
-    
 
     public ApiKeyAuthorizationMiddleware(
         IApiKeyResolver apiKeyResolver,
